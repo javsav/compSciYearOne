@@ -1,0 +1,19 @@
+                nums                                                                  expected odds                 expected evens                        actual odds              actual evens
+ 11, 3, 9, 7, 6, 10, 13, 17, 2, 8, 3                                                 11 3 9 7 13 17 3                  6 10 2 8                         11 3 9 7 13 17 3             6 10 2 8
+12, 99, 0, 22, -46, 3, 2, 1, 100, -7, 2                                                 99 3 1 -7                  12 0 22 -46 2 100 2                      99 3 1 -7            12 0 22 -46 2 100 2 
+'a', 'b', 'c', -1, -2, -3, 'd', 'e', 'f', 4, 5                                      97 99 -1 -3 101 5               98 -2 100 102 4                     97 99 -1 -3 101 5         98 -2 100 102 4
+   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2                                                                                2 2 2 2 2 2 2 2 2 2 2                                         2 2 2 2 2 2 2 2 2 2 2
+   3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3                                                3 3 3 3 3 3 3 3 3 3 3                                             3 3 3 3 3 3 3 3 3 3 3           
+  -0, 0, -0, 0, -0, 0, -0, 0, -0, 0, -0                                                                          0 0 0 0 0 0 0 0 0 0 0                                          0 0 0 0 0 0 0 0 0 0 0
+-99999999999998, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5                                      -3 -1 1 3 5           -4 -2 0 2 4 and inaccurate num          -276447230 -4 -2 0 2 4         -3 -1 1 3 5 
+999999999999999999999999999999999999, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10           1 3 5 7 9 and inaccurate num            2 4 6 8 10                          -1 1 3 5 7 9               2 4 6 8 10 
+
+Test case one tests the array of digits that we were given for the practical, and the program returns the expected odds and evens as predicted.
+Test case two includes 0, and two negative numbers. The program correctly assigns 0 to evens and handles the two negative numbers correctly (-7 odd, -46 even).
+Test case three tests the ASCII values of characters within the integer array. (a: 97, b: 98, c: 99, d: 100, e:101, f: 102). The program correctly assigns these (and the integers) to respective odds and evens.
+Test case four tests all even numbers, to ensure that the individual arrays have enough capacity assigned to store the full eleven integers. This works properly.
+Test case five is the same as test case four, but for odd numbers, and it executes as expected.
+Test case six is a boundary case including negative 0s and unsigned 0s, an interesting concept (signed zeros), particularly in computer science. The program categorises them all as 0 AND even as expected.
+Test case seven is another boundary case as the first even number in the list is larger (in bytes) than the int type allows for. As expected, this resulted in a compiler and execution error (warning: overflow in conversion from ‘long int’ to ‘int’ changes value from ‘-99999999999998’ to ‘-276447230’)
+Test case eight is another boundary case as the first odd number in the list is even larger in bytes than in test case seven. As expected, this resulted in another compiler and execution error, where the integer was converted to -1:
+(warning: overflow in conversion from ‘__int128’ to ‘int’ changes value from ‘12919594847110692863’ to ‘-1’). 

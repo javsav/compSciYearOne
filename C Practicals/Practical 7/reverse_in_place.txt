@@ -1,0 +1,29 @@
+        Input                                   Expected output                                               Output
+     Whatsupdog                                   godpusthaW                                                 godpustahW                          
+       knits                                        stink                                                      stink
+'atrocious', he said                             dias eh ,'suoicorta'                                   dias eh ,'suoicorta'
+        5 2 9                                       9 2 5                                                     9 2 5
+!#@%$^%&^*&)(';></?:                          :?/<>;'()&*^&%^$%@#!                                     :?/<>;'()&*^&%^$%@#!
+ 	    ( . Y . )                                    ) . Y . (                                                 ) . Y . (
+ I love programming, but                      ,gnimmargorp evol I                                          ,gnimmargorp evol I
+       glenelg                                      glenelg                                                    glenelg
+                                        Error is thrown and program aborts.         ERROR: Invalid input. You did not input any data. ABORTING PROGRAM.
+"jadlksjdlkasjdklasjdlkasjdkls               djsalkdjsakldjskldaj                                       djsalkdjsakldjskldaj
+ajdliajwildjalsdjksadjsakdlaj
+slkdjaslkdjklasjdlaksjdlasjdk
+asjdlkasjdlkasjdlkajwlidjlwia
+jdlaiwjadksdjlaksdjlkasdjlkas
+djasldmwqjdoiqwjhdoiwqjdoiqwj
+oidjoiqwdjlksajlaskdjwliowaqi
+dladjlskiawdjlawia"
+
+ Test case one tests a simple short string, which is accurately reversed by the program, as expected.
+ Test case two tests a funny word to reverse, turning knits into stink, which the program accurately does, as expected.
+ Test case three tests several things: special characters, spaces, and it is the maximum character limit of 20. The program acurately reverses the entire string of characters, as expected.
+ Test case four tests whether the program can handle digits, which it does, turning 5 2 9 (five minutes to nine o'clock) into 9 2 5, a Dolly Parton song about working.
+ Test case five tests two things: many special characters, and the string limit of 20. The string of characters is accruately reversed, as expected.
+ Test case six tests an emoji comprising parentheses, periods, and Y. It is accurately reversed, spaces and all.
+ Test case seven purposely tests a phrase which exceeds twenty characters, but specifically the twentieth character is a space - twenty of those characters are returned as expected; the final one (and the first in the returned string) are spaces, hence making it seem like 19 characters, but it is 20. This shows that the program recognises spaces as characters.
+ Test case eight tests an anagram for fun, and as expected, the same word is returned as is entered into the program.
+ Test case nine tests a boundary case - pushing enter without any input, to test the if statement detecting for the 0th index of the usrString array being a new line (\n); the program responds as expected, detecting the lack if input and displaying the error message.
+ Test case ten tests another boundary case - an extremely long string of gibberish (separated on new lines in this text document but all in one line on the input) - as expected, it reverses and returns the first 20 characters of the string only (the quotes were not part of the input, they represent where the string starts and ends).

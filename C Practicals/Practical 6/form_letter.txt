@@ -1,0 +1,14 @@
+        Name           Age  Fraction                                     Expected Output                                                                                                                                 Output
+Sunithanda Mohammamed  101     0.84      Your name is Sunithanda Mohammamed, you are 101 years old, and your employment fraction is 0.8.                                        Your name is Sunithanda Mohammamed, you are 101 years old, and your employment fraction is 0.8.
+   Jason Smith         27      0.33              Your name is Jason Smith, you are 27 years old, and your employment fraction is 0.3.                                               Your name is Jason Smith, you are 27 years old, and your employment fraction is 0.3.
+        a b             2       3       ERROR: Invalid input(s). Please ensure you read the required input format, number of inputs, and enter your details again.        ERROR: Invalid input(s). Please ensure you read the required input format, number of inputs, and enter your details again.
+      Joe Bloggs       50       1                 Your name is Joe Bloggs, you are 50 years old, and your employment fraction is 1.0                                                 Your name is Joe Bloggs, you are 50 years old, and your employment fraction is 1.0
+     Nancy Smith        0       0                 Your name is Nancy Smith, you are 0 years old, and your employment fraction is 0.0                                                 Your name is Nancy Smith, you are 0 years old, and your employment fraction is 0.0
+       A     B         150      D       ERROR: Invalid input(s). Please ensure you read the required input format, number of inputs, and enter your details again.        ERROR: Invalid input(s). Please ensure you read the required input format, number of inputs, and enter your details again.
+
+Test case one tests the maximum number of characters, and the script responds properly.
+Test case two tests a smaller number of characters, again we have a normal response.
+Test case three tests an invalid input for the fraction (3), and hence an error is thrown, and the user is prompted to re-enter their details.
+Test case four tests an employment fraction of 1, which is returned accurately
+Test case five tests an employment fraction of 0, and the details are accurately returned.
+Test case six tests valid inputs other than the age, which is over the maximum allowed, and as such, the user is prompted to re-enter their details.

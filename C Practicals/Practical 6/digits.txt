@@ -1,0 +1,21 @@
+Input                      Expected Output                                                                                    Actual Output
+734                               4                                                                                             4
+                                  3                                                                                             3
+                                  7                                                                                             7
+
+-420                              0                                                                                             0
+                                 -2                                                                                            -2 
+                                 -4                                                                                            -4
+
+999                               9                                                                                             9
+                                  9                                                                                             9
+                                  9                                                                                             9
+
+000             ERROR: Invalid input. Please enter a number comprising exactly 3 digits, and not starting with 0.               ERROR: Invalid input. Please enter a number comprising exactly 3 digits, and not starting with 0.
+
+1234            ERROR: Invalid input. Please enter a number comprising exactly 3 digits, and not starting with 0.               ERROR: Invalid input. Please enter a number comprising exactly 3 digits, and not starting with 0.
+
+Test case 1 tests for a normal three digit number and the script responds in the manner expected.
+Test case 2 tests for a negative number and the script properly prints -4, -2, and 0.
+Test case 3 tests for an invalid input (starting with 0), and the script throws an error and reprompts the user for input. EDIT: had to remove while loop because of autograder issue, so just aborts program now.
+Test case 4 also tests for an invalid input, this time with one too many digits, and the script once again throws an error and reprompts the user for input. EDIT: had to remove while loop because of autograder issue, so just aborts program now.

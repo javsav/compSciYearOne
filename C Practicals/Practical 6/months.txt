@@ -1,0 +1,17 @@
+Input   Expected Output  Actual Output
+  4           Apr             Apr        
+  7           Jul             Jul
+  12          Dec             Dec
+  11323       Dec             Dec
+  abcd        Dec             Dec
+  -100        Dec             Dec
+  9e20        Dec             Dec
+  
+  Test case one tests a normal integer within the range (1-12), amd Apr is returned as expected.
+  Test case two tests another normal integer, 7, and Jul is returned as expected.
+  Test case three also tests a valid month number, 12, and Dec is returned as expected.
+  Test case four tests a number outside of the range, but because a switch statement is used and the default is Dec, Dec is returned as expected.
+  Test case five is similar to four, but tests the input abcd; as C is expecting an integer, it defaults to the defined value of the variable month(0), which thus returns Dec as the default.
+  Test case six tests a negative number, which again returns Dec as the default.
+  Test case seven tests a very large number (900000000000000000000), and Dec is returned as the default again. The switch statement is useful in this regard, as if the value assigned to the
+  month variable is larger than the allocated memory for it (int), it will default to the default case (in this case Dec.)

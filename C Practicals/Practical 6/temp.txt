@@ -1,0 +1,17 @@
+            Input                             Expected Output                     Actual Output
+              1                                     33                                  33
+              a                           ERROR: Please enter a number.     ERROR: Please enter a number.
+             -40                                   -40                                 -40
+              37                                    98                                  98
+              0                                     32                                  32
+            99999                                  18030                               18030
+9999999999999999999999999999999                   1800030                             1800030
+
+Test case one tests a simple integer input, and the result is as expected (although it is not rounded correctly, this is expected as we are using type int.)
+Test case two tests the defensive programming, by inputting a character. The ERROR is accurately displayed, and the user is reprompted for a numerical input.
+Test Case three tests for the crossover in the celsisus and fahrenheit scale, -40, and also tests a negative number. This works properly.
+Test case four tests an approximation of the human body temperature, and is correctly converted (again, not rounded correctly as expected.)
+Test case five ensures that zero can be handled by the script, which it can.
+Test case six tests a large number - the type is int, so does have a limit as to how large a number can be handled. 99999 is accurately converted.
+Test case seven tests an even larger number, which overrides the limit of int, and hence the memory allocated to the integer is overridden and a garbage value of 
+-1 is assigned to celsius (when it was defined as 0).
