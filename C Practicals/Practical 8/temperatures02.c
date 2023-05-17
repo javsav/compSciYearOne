@@ -24,7 +24,7 @@ int main() {
   // Ensure enough memory exists to allocate dynamic array
   if (tempArray == NULL) {
     printf("Memory allocation failed.\n");
-    return -1;  // If failed indicate unsuccessful execution and terminate.
+    return 1;  // If failed indicate unsuccessful execution and terminate.
   }
   // Value that counts the number of temperatures entered
   int numTemps = 0;
