@@ -1,0 +1,24 @@
+% Make a 2D array of values.
+
+imageData = []; % Initialise empty array for image
+imSize = 100;
+numRows = imSize;
+numCols = imSize;
+
+% Populate image data with 100 rows of pixel values
+
+for row = [-50:numRows/2-1] % iterate from 100 to 1 with step -1
+    imageRow = []; % Empty vector for row
+    for col = [-49:numCols/2-1]
+        pixelVal = uint8((((abs(row)*2) + (abs(col)*2)) / (imSize*2)) * 255); % Generate pixel value for each row in range 255:3, each row decreases by 2 or 3
+        imageRow = [imageRow pixelVal];  % Add value for pixel to corresponding column of imageRow
+    end
+    imageData = [imageData; imageRow]; % Add row of pixels to imageData    
+end
+
+
+% Display imageData as an image
+imshow(imageData);
+ 
+% save as an image
+imwrite(imageData,'test5.png');
