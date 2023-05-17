@@ -3,12 +3,13 @@
  * five floats worth of data. The first time that more than five floats are
  * entered, it creates a newTempArray with double the data capacity of the
  * previous tempArray, and copies the previous tempArray to it, freeing up the
- * memory of the old temp array. This behaviour continues ad infinitum, until
- * the user enters -100 to terminate temperature entries, effectively meaning
- * that the array is fully dynamic. Finally, a for loop is used to iterate from
- * the final element of the array (numTemps - 1th element) to the 0th element,
- * and prints each temperature in the reverse order that they were entered, with
- * 1 number after the decimal place. */
+ * memory of the old temp array. Then the newTempArray is renamed to tempArray.
+ * This behaviour continues ad infinitum, until the user enters -100 to
+ * terminate temperature entries, effectively meaning that the array is fully
+ * dynamic. Finally, a for loop is used to iterate from the final element of the
+ * array (numTemps - 1th element) to the 0th element, and prints each
+ * temperature in the reverse order that they were entered, with 1 number after
+ *  the decimal place. */
 
 #include <stdio.h>   // For scanf and printf
 #include <stdlib.h>  // For malloc and free
@@ -66,7 +67,7 @@ int main() {
         printf("Memory allocation failed.\n");
         return -1;  // If failed indicate unsuccessful execution and terminate.
       }
-
+      // Use memcpy to copy numTemps elements of tempArray to newTempArray
       memcpy(newTempArray, tempArray, numTemps * sizeof(float));
       // Free memory allocated to tempArray to prevent memory leaks in loop.
       free(tempArray);
@@ -74,12 +75,13 @@ int main() {
       tempArray = newTempArray;
     }
   }
-
+  /* Print the temps in reverse order using a for loop, starting at the numTemps
+  -1th index, ending at the 0th index, and iterating by -1 indexes each loop */
   for (int tempIndex = numTemps - 1; tempIndex > -1; tempIndex--) {
     printf("%.1f\n", tempArray[tempIndex]);
   }
 
-  // Free memory from tempArray.
+  // Free memory from tempArray before finishing the program.
   free(tempArray);
-  return 0;
+  return 0;  // Indicate successful execution and terminate.
 }
