@@ -19,12 +19,15 @@ int main() {
   printf("Please enter the number of temperatures that you wish to input: ");
   scanf("%d", &numberOfTemps);
 
-  // define tempArray using float pointer,allocate memory for usr numberOfTemps.
+  // Define tempArray using float pointer,allocate memory for usr numberOfTemps.
   tempArray = (float *)malloc(numberOfTemps * sizeof(float));
+
   // Check if malloc has properly allocated memory for numberofTemps in heap.
   if (tempArray == NULL) {
-    printf("Memory allocation failed!\n");
-    return 1;  // Indicate unsuccessful execution and terminate.
+    printf(
+        "ERROR: Memory allocation failed! Please try running the program again "
+        "and inputting a smaller number. \n");
+    return 1;  // If NULL, indicate unsuccessful execution and terminate.
   }
 
   /* Read in temps up to numberofTemps and append each to the numberofTempsth
@@ -33,11 +36,12 @@ int main() {
     printf("Enter temperature %d (degrees Celsius): ", tempIndex + 1);
     scanf("%f", &tempArray[tempIndex]);
   }
-
+  // Print below msg
   printf("\nYou entered the following temperatures:\n");
+
   // Iterate through tempArray from the final index to the 0th index, step -1.
   for (int tempIndex = numberOfTemps - 1; tempIndex > -1; tempIndex--) {
-    // Print each temperature with one decimal place.
+    // Print each temperature with one decimal place in reverse order.
     printf("%.1f ", tempArray[tempIndex]);
   }
   printf("\n");
