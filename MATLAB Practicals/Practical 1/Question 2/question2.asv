@@ -1,0 +1,21 @@
+Workshop 1 Question 2 Test Cases
+
+Population (n)      Matlab Output (kilolitres)      Theoretical output (kilolitres)
+    4e6                      423166.02                            423166.02                         
+   500.5                        53                                 52.95                      
+    one                        0.11                                0.11
+
+The first test case tests the theoretical daily water output for a city with a population of 4
+million, based on a household size of 2.59 and average daily water useage of 274 litres per house.
+((4,000,000 / 2.59) * 274) / 1000 = 423166.02 kilolitres
+
+The second test case tests a city with an invalid population (you can not have
+half a person) to ensure that the script correctly rounds the value to 501,
+thus the slight discrepancy between the theoretical output and matlab output
+is expected
+
+The final test case serves two purposes is a simple test of a city with a population of 1 person.
+While this is not realistic in the real world, the purpose is to make the
+calculation simple ((1 / 2.59) * 274) / 1000 = 0.11 kilolitres. If we multiply
+this by 2.59 (householdSize) we get 274 which is the average daily litres per house,
+suggesting the calcultations used in the script are correct.         
