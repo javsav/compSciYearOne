@@ -15,7 +15,12 @@ int main() {
   // Float pointer to tempArray.
   float *tempArray;
 
-  // Ask the user for the number of temperatures
+  // Explain program, and ask user how many values they would like to assess.
+  printf(
+      "This program will ask you for how many temperatures you would like to "
+      "input.\nIt will then ask you to enter each temperature.\n Following the"
+      "final temperature entered, it will print temperatures back to you in "
+      "reverse.\n");
   printf("Please enter the number of temperatures that you wish to input: ");
   scanf("%d", &numberOfTemps);
 
