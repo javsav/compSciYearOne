@@ -1,0 +1,11 @@
+Workshop 1 Question 1 Test Cases
+
+Height (cm)      Length (cm)      Depth (cm)      Matlab Output (m^3)      Theoretical Output (m^3)
+40                  88                0                  0                          0
+sqrt(66)            pi                69               17.61                      17.61
+12                  3                 a              Error using input a      depends upon value of variable a
+
+Test case 1 ensures that the product is 0 due to a depth of 0
+Test case 2 uses floats to ensure that the program can handle volumes of floats
+Test case 3 uses the string a in order to throw an error and the use of a
+while loop re-prompts the user to enter a number
