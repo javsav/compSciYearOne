@@ -1,9 +1,0 @@
-Original Vector                     Expected Result                                        Matlab Result
-    A                                     B                                                      B
-[1, 0, -1]                   1.0000, 0.0000, -1.0000,                              1.0000, 0.0000, -1.0000,
-[-2.33 : 2.33 : 6.99]    -12.6493, 0.0000, 12.6493, 101.1947, 341.5321,     -12.6493, 0.0000, 12.6493, 101.1947, 341.5321,
-[a, b, c]                         a^3, b^3, c^3,                           throws error (unrecognized function or variable 'a') - expects double input not variable or string
-
-Test case 1 tests whether 1, 0 and -1 can accurately be cubed, as they all should return the same result as the original vector
-Test case 2 tests a generated array and also tests that floats can be successfully cubed
-Test case 3 test user entered variables which throws an error as expected. This could be prevented with a while loop.
