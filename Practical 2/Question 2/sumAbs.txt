@@ -1,0 +1,19 @@
+num1  num2    num3   num4   num5   Theoretical Output (absSum)    Matlab Output (absSum)
+-1   sqrt(4)   -3      4     -5           15.0                             15.0
+ 1    -2        3     -4      5           15.0                             15.0
+-500  twenty  -33.3  -40.4   -42          193.0                       throws error with non-numerical value entered
+-1.0  -2.0     3.0    -4.0   5.0          15.0                             15.0
+ 3.0  -7.0    -2.0     3.0   5.0          20.0                             20.0
+
+Test cases 1 and 2 together check that the program is correctly converting the inputs
+into their absolute values by inverting the positives and negatives and still giving
+the correct output, as both test cases should be equal if this is the case
+
+Test case 3 shows a flaw with the program in that if the user enters a variable name or string
+instead of a numerical value, the program is not coded to error check for this.
+While a nested while loop could be used (while isstring(sum)) to reprompt
+for a numerical value, this would only work if the user entered the value
+in quotation marks ("twenty"). A solution to this would involve nested loops and the nan(not a numeral) function
+but would make the script unnecessarily complicated.
+
+The last two test cases are the exmaples which we were instructed to include.         

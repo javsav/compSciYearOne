@@ -1,0 +1,94 @@
+
+Test 1:
+Student 1 (height, cm)  Student 2 (height, cm)  Student 3 (height, cm)  Student 4 (height, cm)  Student 5 (height, cm)
+        136.6                    167                    180                     155.5                   191
+
+Theoretical output:
+
+  136.6000
+
+   167
+
+   180
+
+  155.5000
+
+   191
+
+Matlab output:
+
+  136.6000
+
+   167
+
+   180
+
+  155.5000
+
+   191
+
+
+Test 2:
+Student 1 (height, cm)  Student 2 (height, cm)  Student 3 (height, cm)  Student 4 (height, cm)  Student 5 (height, cm)
+        -180                    -169                    -130                     -200                   -140
+
+Theoretical output:
+
+  -180
+
+  -169
+
+  -130
+
+  -200
+
+  -140
+
+Matlab output:
+
+   180 (throws error for each negative number and repromtps user for input)
+
+   169
+
+   130
+
+   200
+
+   140
+
+Test 3:
+Student 1 (height, cm)  Student 2 (height, cm)  Student 3 (height, cm)  Student 4 (height, cm)  Student 5 (height, cm)
+    one hundred and seventy        6"3                   five feet                   160                   210
+
+Theoretical output:
+
+   170
+
+  190.5
+
+  152.4
+
+   160
+
+   210
+
+Matlab output:
+
+    170 (throws error and when reprompted entered 170)
+
+    6.3000 (throws error for not properly terminated string and user enters 6.3 instead of converting to cm)
+
+     5 (throws error and user enters 5)
+
+   160 
+
+   210
+
+Test case 1 is a fairly standard test but uses decimals to show the limitations of using disp() 
+as opposed to fprintf with \n at the start and end of the string and a %.2f to round to 2 decimal places
+
+Test case 2 checks that the nested while loop to prevent negative numbers is operating correctly
+and when re-prompted the user enters the positive number
+
+Test case 3 involves the user entering non-numerical values and imperial units of measurement which throws errors and
+there is no line in the code to convert numerical imperial values into centimetres so five feet is displayed as 5 centimetres.
