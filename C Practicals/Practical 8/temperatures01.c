@@ -3,9 +3,8 @@
  * the heap, with a memory size of n * the size of a float. It then appends
  * these characters to an array, and uses a for loop to iterate from the final
  * element of the array (n - 1th element) to the 0th element, and prints each
- * temperature in the reverse order that they were entered, with 1 significant
- * digit of accuracy.
- */
+ * temperature in the reverse order that they were entered, with 1 number after
+ * the decimal place. */
 
 #include <stdio.h>   // For scanf and printf
 #include <stdlib.h>  // For malloc and free
