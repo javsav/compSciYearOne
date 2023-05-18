@@ -39,10 +39,10 @@ int main() {
   while (tempsBeingEntered) {
     printf("Enter temperature %d (degrees Celsius): ", numTemps + 1);
     // Error checking for invalid scanf inputs
-    int result = scanf("%f", &tempArray[numTemps]);
+    int input = scanf("%f", &tempArray[numTemps]);
 
     // If scanf failed, print msg and return to the current iteration of loop.
-    if (result != 1) {
+    if (input != 1) {
       printf(
           "\n\nERROR: Invalid input. (Letter or excessively large number). "
           "ABORTING PROGRAM.\n\n");
@@ -75,12 +75,15 @@ int main() {
       tempArray = newTempArray;
     }
   }
+  // Print below msg
+  printf("\nYou entered the following temperatures (degrees Celsius): \n");
+
   /* Print the temps in reverse order using a for loop, starting at the numTemps
   -1th index, ending at the 0th index, and iterating by -1 indexes each loop */
   for (int tempIndex = numTemps - 1; tempIndex > -1; tempIndex--) {
-    printf("%.1f\n", tempArray[tempIndex]);
+    printf("%.1f ", tempArray[tempIndex]);
   }
-
+  printf("\n");  // New line.
   // Free memory from tempArray before finishing the program.
   free(tempArray);
   return 0;  // Indicate successful execution and terminate.

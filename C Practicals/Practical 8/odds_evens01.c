@@ -18,13 +18,21 @@ int main() {
   // Explain program, and ask user how many values they would like to assess.
   printf(
       "This program will ask you for how many numbers you would like to "
-      "input.\n It will then ask you to enter each number.\n Following the "
+      "input.\nIt will then ask you to enter each number.\nFollowing the "
       "final number entered, it will print the odd numbers on one line, "
       "followed by the even numbers on a line below.\n");
   printf("Please enter how many numbers you would like to input: ");
 
   // Obtain input of number of values to assess for divisibility by 2.
-  scanf("%d", &numberOfNums);
+  int input = scanf("%d", &numberOfNums);
+
+  // If scanf failed, print msg and return to the current iteration of loop.
+  if (input != 1) {
+    printf(
+        "\n\nERROR: Invalid input. (Letter or excessively large number). "
+        "ABORTING PROGRAM.\n\n");
+    return 1;  // Indicate unsuccessful execution and terminate.
+  }
 
   // define numArray using int pointer,allocate memory for usr numberOfNums.
   numArray = (int *)malloc(numberOfNums * sizeof(int));
@@ -40,7 +48,14 @@ int main() {
   // Read in the required number of nums and append to numArray.
   for (int numIndex = 0; numIndex < numberOfNums; numIndex++) {
     printf("Please enter number %d: ", numIndex + 1);
-    scanf("%d", &numArray[numIndex]);
+    int input = scanf("%d", &numArray[numIndex]);
+    // If scanf failed, print msg and return to the current iteration of loop.
+    if (input != 1) {
+      printf(
+          "\n\nERROR: Invalid input. (Letter or excessively large number). "
+          "ABORTING PROGRAM.\n\n");
+      return 1;  // Indicate unsuccessful execution and terminate.
+    }
   }
   // Count number of even & odd numbers to determine amount of memory needed.
   for (int count = 0; count < numberOfNums; count++) {
