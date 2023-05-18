@@ -18,8 +18,8 @@ int main() {
   // Explain program, and ask user how many values they would like to assess.
   printf(
       "This program will ask you for how many temperatures you would like to "
-      "input.\nIt will then ask you to enter each temperature.\n Following the"
-      "final temperature entered, it will print temperatures back to you in "
+      "input.\nIt will then ask you to enter each temperature.\nFollowing the"
+      " final temperature entered, it will print temperatures back to you in "
       "reverse.\n");
   printf("Please enter the number of temperatures that you wish to input: ");
   scanf("%d", &numberOfTemps);
@@ -39,17 +39,24 @@ int main() {
    * index of tempArray */
   for (int tempIndex = 0; tempIndex < numberOfTemps; tempIndex++) {
     printf("Enter temperature %d (degrees Celsius): ", tempIndex + 1);
-    scanf("%f", &tempArray[tempIndex]);
+    int input = scanf("%f", &tempArray[tempIndex]);
+    // If scanf failed, print msg and return to the current iteration of loop.
+    if (input != 1) {
+      printf(
+          "\n\nERROR: Invalid input. (Letter or excessively large number). "
+          "ABORTING PROGRAM.\n\n");
+      return 1;  // Indicate unsuccessful execution and terminate.
+    }
   }
   // Print below msg
-  printf("\nYou entered the following temperatures:\n");
+  printf("\nYou entered the following temperatures (degrees Celsius): \n");
 
   // Iterate through tempArray from the final index to the 0th index, step -1.
   for (int tempIndex = numberOfTemps - 1; tempIndex > -1; tempIndex--) {
     // Print each temperature with one decimal place in reverse order.
     printf("%.1f ", tempArray[tempIndex]);
   }
-  printf("\n");
+  printf("\n");  // New line.
 
   // Free memory allocated by malloc to tempArray
   free(tempArray);
