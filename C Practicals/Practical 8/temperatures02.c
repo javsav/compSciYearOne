@@ -18,16 +18,21 @@
 int main() {
   float *tempArray;   // Pointer to tempArray
   int arraySize = 5;  // Initial arraySize
+  float temp = 0;     // Initialise temp variable
   // Defining dynamic array with 5 integers worth of data assigned in the heap.
   tempArray = (float *)malloc(arraySize * sizeof(float));
 
   // Ensure enough memory exists to allocate dynamic array
   if (tempArray == NULL) {
-    printf("Memory allocation failed.\n");
+    printf(
+        "ERROR: Memory allocation failed. Try inputting a smaller number. "
+        "ABORTING PROGRAM.\n");
     return 1;  // If failed indicate unsuccessful execution and terminate.
   }
+
   // Value that counts the number of temperatures entered
   int numTemps = 0;
+
   // Value to increase readability of inf while loop.
   int tempsBeingEntered = 1;
   printf(
@@ -39,20 +44,24 @@ int main() {
   while (tempsBeingEntered) {
     printf("Enter temperature %d (degrees Celsius): ", numTemps + 1);
     // Error checking for invalid scanf inputs
-    int input = scanf("%f", &tempArray[numTemps]);
+    int input = scanf("%f", &temp);
 
-    // If scanf failed, print msg and return to the current iteration of loop.
+    // If scanf failed, print error msg and terminate.
     if (input != 1) {
       printf(
-          "\n\nERROR: Invalid input. (Letter or excessively large number). "
-          "ABORTING PROGRAM.\n\n");
+          "\n\nERROR: Invalid input: letter, character, or excessively large "
+          "number. ABORTING PROGRAM.\n\n");
       return 1;  // Indicate unsuccessful execution and terminate.
     }
 
     // End temperature input when user enters -100.
-    if (tempArray[numTemps] == -100) {
+    if (temp == -100) {
       break;
     }
+
+    // Append temp to tempArray
+    tempArray[numTemps] = temp;
+
     // Increment numTemps each time a valid temperature is entered.
     numTemps++;
 

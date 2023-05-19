@@ -26,14 +26,20 @@ int main() {
   // Obtain input of number of values to assess for divisibility by 2.
   int input = scanf("%d", &numberOfNums);
 
-  // If scanf failed, print msg and return to the current iteration of loop.
+  // If scanf failed, print error msg and terminate.
   if (input != 1) {
     printf(
-        "\n\nERROR: Invalid input. (Letter or excessively large number). "
-        "ABORTING PROGRAM.\n\n");
+        "\n\nERROR: Invalid input (letter, or character). ABORTING "
+        "PROGRAM.\n\n");
     return 1;  // Indicate unsuccessful execution and terminate.
   }
 
+  if (numberOfNums < 1) {
+    printf(
+        "\n\nERROR: Number of values to be entered must be greater than zero. "
+        "ABORTING PROGRAM.");
+    return 1;  // Indicate unsuccessful execution and terminate.
+  }
   // define numArray using int pointer,allocate memory for usr numberOfNums.
   numArray = (int *)malloc(numberOfNums * sizeof(int));
 
@@ -41,7 +47,7 @@ int main() {
   if (numArray == NULL) {
     printf(
         "ERROR: Memory allocation failed! Please try running the program again "
-        "and inputting a smaller number. \n");
+        "and inputting a smaller number. ABORTING PROGRAM. \n");
     return 1;  // If NULL, indicate unsuccessful execution and terminate.
   }
 
@@ -49,7 +55,7 @@ int main() {
   for (int numIndex = 0; numIndex < numberOfNums; numIndex++) {
     printf("Please enter number %d: ", numIndex + 1);
     int input = scanf("%d", &numArray[numIndex]);
-    // If scanf failed, print msg and return to the current iteration of loop.
+    // If scanf failed, print error msg and terminate.
     if (input != 1) {
       printf(
           "\n\nERROR: Invalid input. (Letter or excessively large number). "

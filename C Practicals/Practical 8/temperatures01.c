@@ -22,7 +22,23 @@ int main() {
       " final temperature entered, it will print temperatures back to you in "
       "reverse.\n");
   printf("Please enter the number of temperatures that you wish to input: ");
-  scanf("%d", &numberOfTemps);
+  int input = scanf("%d", &numberOfTemps);
+
+  // If scanf failed, print error msg and terminate.
+  if (input != 1) {
+    printf(
+        "\n\nERROR: Invalid input: letter, character, or excessively large "
+        "number. ABORTING PROGRAM.\n\n");
+    return 1;  // Indicate unsuccessful execution and terminate.
+  }
+
+  // If user enters 0 or negative number, disp error msg and terminate.
+  if (numberOfTemps < 1) {
+    printf(
+        "\n\nERROR: Number of temperatures must be greater than zero. ABORTING "
+        "PROGRAM.\n");
+    return 1;  // Indicate unsuccessful execution and terminate.
+  }
 
   // Define tempArray using float pointer,allocate memory for usr numberOfTemps.
   tempArray = (float *)malloc(numberOfTemps * sizeof(float));
@@ -40,14 +56,15 @@ int main() {
   for (int tempIndex = 0; tempIndex < numberOfTemps; tempIndex++) {
     printf("Enter temperature %d (degrees Celsius): ", tempIndex + 1);
     int input = scanf("%f", &tempArray[tempIndex]);
-    // If scanf failed, print msg and return to the current iteration of loop.
+    // If scanf failed, print error msg and terminate.
     if (input != 1) {
       printf(
-          "\n\nERROR: Invalid input. (Letter or excessively large number). "
+          "\n\nERROR: Invalid input: letter or character. "
           "ABORTING PROGRAM.\n\n");
       return 1;  // Indicate unsuccessful execution and terminate.
     }
   }
+
   // Print below msg
   printf("\nYou entered the following temperatures (degrees Celsius): \n");
 
