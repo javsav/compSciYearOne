@@ -1,9 +1,10 @@
 /* This program receives an input of temperatures from a user as floats, and
  * stores them in a dynamic array in the heap, with an initial memory size of
  * five floats worth of data. The first time that more than five floats are
- * entered, it creates a newTempArray with double the data capacity of the
- * previous tempArray, and copies the previous tempArray to it, freeing up the
- * memory of the old temp array. Then the newTempArray is renamed to tempArray.
+ * entered, it allocates a pointer to new tempArray with double the data
+ * capacity of the previous tempArray, and copies the previous tempArray to it,
+ * freeing up the memory allocated to tempArray. Then the pointer to
+ * newTempArray is reassigned to tempArray, allowing for the next iteration.
  * This behaviour continues ad infinitum, until the user enters -100 to
  * terminate temperature entries, effectively meaning that the array is fully
  * dynamic. Finally, a for loop is used to iterate from the final element of the
@@ -18,20 +19,20 @@
 int main() {
   float *tempArray;   // Pointer to tempArray
   int arraySize = 5;  // Initial arraySize
-  float temp = 0;     // Initialise temp variable
-  // Defining dynamic array with 5 integers worth of data assigned in the heap.
+  float temp = 0;     // Initialise temp variable for temperature inputs
+
+  // Allocate 5 floats worth of data in the heap & assign to tempArray pointer.
   tempArray = (float *)malloc(arraySize * sizeof(float));
 
-  // Ensure enough memory exists to allocate dynamic array
+  // Ensure initial memory allocation for tempArray pointer is successful.
   if (tempArray == NULL) {
     printf(
-        "ERROR: Memory allocation failed. Try inputting a smaller number. "
-        "ABORTING PROGRAM.\n");
+        "ERROR: Memory allocation for tempArray failed. ABORTING PROGRAM.\n");
     return 1;  // If failed indicate unsuccessful execution and terminate.
   }
 
-  // Value that counts the number of temperatures entered
-  int numTemps = 0;
+  // Value that counts the number of temperatures entered & is an array index.
+  int numOfTemps = 0;
 
   // Value to increase readability of inf while loop.
   int tempsBeingEntered = 1;
@@ -42,8 +43,8 @@ int main() {
       "temperature, and only serves to terminate the input.\n");
 
   while (tempsBeingEntered) {
-    printf("Enter temperature %d (degrees Celsius): ", numTemps + 1);
-    // Error checking for invalid scanf inputs
+    printf("Enter temperature %d (degrees Celsius): ", numOfTemps + 1);
+    // Obtain input and assign int input for error checking
     int input = scanf("%f", &temp);
 
     // If scanf failed, print error msg and terminate.
@@ -60,40 +61,47 @@ int main() {
     }
 
     // Append temp to tempArray
-    tempArray[numTemps] = temp;
+    tempArray[numOfTemps] = temp;
 
-    // Increment numTemps each time a valid temperature is entered.
-    numTemps++;
+    // Increment numOfTemps each time a valid temperature is entered.
+    numOfTemps++;
 
     // When the number of temperatures entered equals the array size, double it.
-    if (numTemps == arraySize) {
+    if (numOfTemps == arraySize) {
       arraySize *= 2;
 
       // Create newTempArray with the new doubled array size.
       float *newTempArray = (float *)malloc(arraySize * sizeof(float));
       // Check if the memory allocation fails and:
       if (newTempArray == NULL) {
-        printf("Memory allocation failed.\n");
+        printf(
+            "ERROR: Memory allocation failed. Maximum number of temperatures "
+            "exceeded for your system ABORTING PROGRAM.\n");
+
         return -1;  // If failed indicate unsuccessful execution and terminate.
       }
-      // Use memcpy to copy numTemps elements of tempArray to newTempArray
-      memcpy(newTempArray, tempArray, numTemps * sizeof(float));
+      // Copy numOfTemps * sizeof(float) bytes from tempArray to newTempArray
+      memcpy(newTempArray, tempArray, numOfTemps * sizeof(float));
+
       // Free memory allocated to tempArray to prevent memory leaks in loop.
       free(tempArray);
-      // Reset tempArray to newTempArray for next iteration of loop
+
+      // Assign newTempArray pointer to tempArray for next iteration.
       tempArray = newTempArray;
     }
   }
   // Print below msg
   printf("\nYou entered the following temperatures (degrees Celsius): \n");
 
-  /* Print the temps in reverse order using a for loop, starting at the numTemps
+  /* Print temps in reverse order using a for loop, starting at the numOfTemps
   -1th index, ending at the 0th index, and iterating by -1 indexes each loop */
-  for (int tempIndex = numTemps - 1; tempIndex > -1; tempIndex--) {
+  for (int tempIndex = numOfTemps - 1; tempIndex > -1; tempIndex--) {
     printf("%.1f ", tempArray[tempIndex]);
   }
   printf("\n");  // New line.
-  // Free memory from tempArray before finishing the program.
+
+  // Free memory allocated during final iteration of while-loop to tempArray.
   free(tempArray);
+
   return 0;  // Indicate successful execution and terminate.
 }
