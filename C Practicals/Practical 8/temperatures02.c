@@ -10,16 +10,20 @@
  * dynamic. Finally, a for loop is used to iterate from the final element of the
  * array (numTemps - 1th element) to the 0th element, and prints each
  * temperature in the reverse order that they were entered, with 1 number after
- *  the decimal place. */
+ *  the decimal place. The minimum temperature is absolute zero, and the maximum
+ * temperature is more than ten times that of the hottest star known. */
 
 #include <stdio.h>   // For scanf and printf
 #include <stdlib.h>  // For malloc and free
 #include <string.h>  // For memcpy
 
 int main() {
-  float *tempArray;   // Pointer to tempArray
-  int arraySize = 5;  // Initial arraySize
-  float temp = 0;     // Initialise temp variable for temperature inputs
+  float *tempArray;                            // Pointer to tempArray
+  int arraySize = 5;                           // Initial arraySize
+  float minTemp = -273.15, maxTemp = 3000000;  // Min & max temperature values.
+
+  // Initialise temp variable for temperature inputs
+  float temp = 0;
 
   // Allocate 5 floats worth of data in the heap & assign to tempArray pointer.
   tempArray = (float *)malloc(arraySize * sizeof(float));
@@ -40,18 +44,28 @@ int main() {
       "This program will ask you to enter a series of temperatures.\nOnce you"
       " have finished entering those temperatures, please enter -100 as the "
       "final temperature to end input.\n-100 will not be considered a "
-      "temperature, and only serves to terminate the input.\n");
+      "temperature, and only serves to terminate the input.\n After "
+      "termination of input, the program will read back the temperatures in "
+      "reverse order.\nThe acceptable temperature range is -273.15 to "
+      "3,000,000 degrees Celsius.\n\n");
 
   while (tempsBeingEntered) {
     printf("Enter temperature %d (degrees Celsius): ", numOfTemps + 1);
     // Obtain input and assign int input for error checking
     int input = scanf("%f", &temp);
 
-    // If scanf failed, print error msg and terminate.
+    // If input is non-numeric, print error message and terminate program.
     if (input != 1) {
       printf(
-          "\n\nERROR: Invalid input: letter, character, or excessively large "
-          "number. ABORTING PROGRAM.\n\n");
+          "\n\nERROR: Invalid input: letter or character. ABORTING "
+          "PROGRAM.\n\n");
+      return 1;  // Indicate unsuccessful execution and terminate.
+    }
+
+    if (temp < minTemp || temp > maxTemp) {
+      printf(
+          "\n\nERROR: Invalid input: temperature out of range. ABORTING "
+          "PROGRAM.\n\n");
       return 1;  // Indicate unsuccessful execution and terminate.
     }
 
@@ -90,7 +104,6 @@ int main() {
       tempArray = newTempArray;
     }
   }
-  // Print below msg
   printf("\nYou entered the following temperatures (degrees Celsius): \n");
 
   /* Print temps in reverse order using a for loop, starting at the numOfTemps
@@ -98,7 +111,8 @@ int main() {
   for (int tempIndex = numOfTemps - 1; tempIndex > -1; tempIndex--) {
     printf("%.1f ", tempArray[tempIndex]);
   }
-  printf("\n");  // New line.
+
+  printf("\n");
 
   // Free memory allocated during final iteration of while-loop to tempArray.
   free(tempArray);
